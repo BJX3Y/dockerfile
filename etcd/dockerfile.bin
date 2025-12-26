@@ -20,14 +20,14 @@ RUN curl -L https://github.com/etcd-io/etcd/releases/download/v${ETCD_VERSION}/e
     | tar -xz --strip-components=1 -C /usr/local/bin/ etcd-v${ETCD_VERSION}-linux-${ARCH}/etcdutl
 
 # 创建 etcd 数据目录（与官方镜像一致）
-RUN mkdir -p /bitnami/etcd/data \
-    && chmod 777 /bitnami/etcd/data
+RUN mkdir -p /x3y/etcd/data \
+    && chmod 777 /x3y/etcd/data
 
 # 暴露端口（client:2379，peer:2380）
 EXPOSE 2379 2380
 
-# 设置环境变量（与 bitnami 镜像兼容）
-ENV ETCD_DATA_DIR=/bitnami/etcd/data \
+# 设置环境变量
+ENV ETCD_DATA_DIR=/x3y/etcd/data \
     ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379 \
     ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
 
